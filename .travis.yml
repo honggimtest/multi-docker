@@ -19,7 +19,7 @@ after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   # push images
-  - docker push -t honggimtest/multi-client
-  - docker push -t honggimtest/multi-nginx
-  - docker push -t honggimtest/multi-server
-  - docker push -t honggimtest/multi-worker
+  - docker push honggimtest/multi-client
+  - docker push honggimtest/multi-nginx
+  - docker push honggimtest/multi-server
+  - docker push honggimtest/multi-worker
