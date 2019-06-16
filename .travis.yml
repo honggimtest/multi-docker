@@ -11,15 +11,15 @@ script:
 
 after_success:
   - docker build -t honggim/multi-client ./client
-  - docker build -t honggimtest/multi-nginx ./nginx
-  - docker build -t honggimtest/multi-server ./server
-  - docker build -t honggimtest/multi-worker ./worker
+  - docker build -t honggim/multi-nginx ./nginx
+  - docker build -t honggim/multi-server ./server
+  - docker build -t honggim/multi-worker ./worker
 
   # login with docker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   # push images
   - docker push honggim/multi-client
-  - docker push honggimtest/multi-nginx
-  - docker push honggimtest/multi-server
-  - docker push honggimtest/multi-worker
+  - docker push honggim/multi-nginx
+  - docker push honggim/multi-server
+  - docker push honggim/multi-worker
