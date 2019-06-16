@@ -10,7 +10,7 @@ script:
   - docker run -e CI-true honggimtest/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t honggimtest/multi-client ./client
+  - docker build -t honggim/multi-client ./client
   - docker build -t honggimtest/multi-nginx ./nginx
   - docker build -t honggimtest/multi-server ./server
   - docker build -t honggimtest/multi-worker ./worker
