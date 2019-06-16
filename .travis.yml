@@ -1,0 +1,25 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t honggimtest/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI-true honggimtest/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t honggimtest/multi-client ./client
+  - docker build -t honggimtest/multi-nginx ./nginx
+  - docker build -t honggimtest/multi-server ./server
+  - docker build -t honggimtest/multi-worker ./worker
+
+  # login with docker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  # push images
+  - docker push -t honggimtest/multi-client
+  - docker push -t honggimtest/multi-nginx
+  - docker push -t honggimtest/multi-server
+  - docker push -t honggimtest/multi-worker
