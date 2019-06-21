@@ -5,24 +5,28 @@
             "name": "client",
             "image": "honggim/multi-client",
             "hostname": "client",
+            "memory": 128,
             "essential": false
         },
         {
             "name": "server",
             "image": "honggim/multi-server",
             "hostname": "api",
+            "memory": 128,
             "essential": false
         },
         {
             "name": "worker",
             "image": "honggim/multi-worker",
             "hostname": "worker",
+            "memory": 128,
             "essential": false
         },
         {
             "name": "nginx",
             "image": "honggim/multi-nginx",
             "essential": true,
+            "memory": 128,
             "portMappings": [
                 {
                     "hostPort": 80,
